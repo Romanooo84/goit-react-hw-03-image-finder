@@ -1,0 +1,33 @@
+.formclass{
+        display: flex;
+        justify-content: space-around;
+        background-color: rgb(2, 2, 129);
+        min-width: 100%;
+}
+
+.formdiv{
+    margin: 10px;
+    display: flex;
+    width: 400px;
+    border: 1px;
+    border-style: solid;
+    background-color: white;
+    border-radius: 6px;
+}
+
+button {
+    background-color: white;
+    border-style: solid;
+    border: 0;
+    width: 35px;
+    border-radius: 5px;
+}
+
+input {
+    height: 30px;
+    border: 0;   
+    outline: none;
+    width: 100%;
+    border-radius: 5px;
+}
+
