@@ -1,4 +1,4 @@
-import { Button } from "./Button"
+import { SearchButton } from "./Button"
 import css from '../css/searchbar.module.css'
 
 export const Searchbar = ({onChange, onClick}) => {
@@ -6,7 +6,7 @@ export const Searchbar = ({onChange, onClick}) => {
         <div className={css.formclass}>  
             <form>      
                 <div className={css.formdiv}>
-                    <Button onClick={onClick} />  
+                    <SearchButton onClick={onClick} />  
                     <input
                             type="text"
                             name="name"
