@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { Searchbar } from "./Searchbar";
 import { ImageGallery } from "./Imagegallery"
 import { PaginationButton } from "./Button";
+import { Modal } from "./Modal";
 import css from '../css/app.module.css'
+import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 
 
 
@@ -12,6 +14,9 @@ export const App = () => {
   const [dataResponse, setDataResponse] = useState([])
   const [markup, setMarkup] = useState()
   const [page, setPage] = useState(1)
+  const [picture, setPicture] = useState()
+  const [modal, setModal] = useState(false)
+  const [modalClass, setModalClass] = useState('visually-hidden')
 
   const API = '42510468-83e1823d3ac9bdf29bf082bf9'
 
@@ -43,7 +48,7 @@ export const App = () => {
     searchParams.set('page', page);
   }
 
-  const onClick2 = (event) => {
+  const onClickPag = (event) => {
     event.preventDefault();
     let url = `https://pixabay.com/api/?${searchParams}`
     fetch(url)
@@ -59,7 +64,20 @@ export const App = () => {
         }
       );
   }
-  
+
+  const toggleModal = (event) => {
+    event.preventDefault()
+    setModal(!modal)
+    setPicture(event.target.parentNode.getAttribute('href'))
+  }
+
+  const escModal = (event) => {
+    console.log(event)
+      if (event.key === 'Escape') {
+        console.log('esc')
+        setModalClass('visually-hidden')
+    }
+    }
 
 
   useEffect(() => {
@@ -69,18 +87,27 @@ export const App = () => {
     }
     else {
     }
-}, [dataResponse]);
+  }, [dataResponse]);
+  
+  useEffect(() => {
+    if (modal) {
+      setModalClass('modal-open')
+    }
+    else {
+      setModalClass('visually-hidden')
+    }
+}, [modal]);
   
 
 
   return (
     <div className={css.mainDiv}>
       <Searchbar onChange={onChange} onClick={onClick} />
-      <ImageGallery markup={markup} />
-      <PaginationButton onClick2={onClick2}/>
+      <ImageGallery markup={markup} toggleModal={toggleModal}  />
+      <PaginationButton onClickPag={onClickPag} />
+      <Modal modalClass={modalClass} picture={picture} escModal={escModal}/>
       {/*<ImageGalleryItem />
-      <Loader />
-    <Modal/>*/}
+      <Loader />*/}
     </div>
   );
 };

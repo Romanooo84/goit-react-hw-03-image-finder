@@ -9,8 +9,8 @@ export const SearchButton = ({onClick}) => {
     )
 }
 
-export const PaginationButton = ({onClick2 }) => {
+export const PaginationButton = ({onClickPag }) => {
     return (
-        <button type='button' onClick={onClick2}>Load more</button>
+        <button type='button' onClick={onClickPag}>Load more</button>
     )
 }
