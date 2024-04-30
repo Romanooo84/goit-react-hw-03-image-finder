@@ -72,7 +72,7 @@ export const App = () => {
   }
 
   const escModal = (event) => {
-    console.log(event)
+    console.log(event.key)
       if (event.key === 'Escape') {
         console.log('esc')
         setModalClass('visually-hidden')
