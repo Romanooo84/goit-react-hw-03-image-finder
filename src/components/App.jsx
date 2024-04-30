@@ -3,10 +3,7 @@ import { Searchbar } from "./Searchbar";
 import { ImageGallery } from "./Imagegallery"
 import { PaginationButton } from "./Button";
 import { Modal } from "./Modal";
-import { Loader} from
-import css from '../css/app.module.css'
-
-
+import { Loader} from './Loader'
 
 
 export const App = () => {
