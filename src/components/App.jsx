@@ -3,7 +3,8 @@ import { Searchbar } from "./Searchbar";
 import { ImageGallery } from "./Imagegallery"
 import { PaginationButton } from "./Button";
 import { Modal } from "./Modal";
-import { Loader} from './Loader'
+import { Loader} from './Loader';
+import css from '../css/app.module.css'
 
 
 export const App = () => {
@@ -117,8 +118,8 @@ useEffect(() => {
       <PaginationButton onClickPag={onClickPag} />
       <Modal modalClass={modalClass} picture={picture} escModal={escModal}/>
       <Loader />
-      /*<ImageGalleryItem />
-      */
+      {/*<ImageGalleryItem />
+      */}
     </div>
   );
 };
