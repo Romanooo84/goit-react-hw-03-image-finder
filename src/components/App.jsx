@@ -108,7 +108,7 @@ useEffect(() => {
   return () => {
     document.removeEventListener('keydown', handleEscape);
   };
-}, [])
+}, [modal])
   
 
 
