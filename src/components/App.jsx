@@ -4,7 +4,7 @@ import { ImageGallery } from "./Imagegallery"
 import { PaginationButton } from "./Button";
 import { Modal } from "./Modal";
 import css from '../css/app.module.css'
-import { setSelectionRange } from "@testing-library/user-event/dist/utils";
+
 
 
 
