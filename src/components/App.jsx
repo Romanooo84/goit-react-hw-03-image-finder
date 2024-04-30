@@ -97,6 +97,18 @@ export const App = () => {
       setModalClass('visually-hidden')
     }
 }, [modal]);
+
+useEffect(() => {
+  const handleEscape = (event) => {
+    if(event.key==="Escape"){
+      setModal(false)
+    }
+  };
+  document.addEventListener('keydown', handleEscape);
+  return () => {
+    document.removeEventListener('keydown', handleEscape);
+  };
+}, [])
   
 
 
