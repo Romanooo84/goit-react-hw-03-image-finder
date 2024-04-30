@@ -3,6 +3,7 @@ import { Searchbar } from "./Searchbar";
 import { ImageGallery } from "./Imagegallery"
 import { PaginationButton } from "./Button";
 import { Modal } from "./Modal";
+import { Loader} from
 import css from '../css/app.module.css'
 
 
@@ -118,8 +119,9 @@ useEffect(() => {
       <ImageGallery markup={markup} toggleModal={toggleModal}  />
       <PaginationButton onClickPag={onClickPag} />
       <Modal modalClass={modalClass} picture={picture} escModal={escModal}/>
-      {/*<ImageGalleryItem />
-      <Loader />*/}
+      <Loader />
+      /*<ImageGalleryItem />
+      */
     </div>
   );
 };
