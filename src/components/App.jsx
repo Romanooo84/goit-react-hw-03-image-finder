@@ -16,6 +16,7 @@ export const App = () => {
   const [picture, setPicture] = useState()
   const [modal, setModal] = useState(false)
   const [modalClass, setModalClass] = useState('visually-hidden')
+  const [loaderClass, setLoaderClass] = useState('visually-hidden')
 
   const API = '42510468-83e1823d3ac9bdf29bf082bf9'
 
@@ -37,6 +38,7 @@ export const App = () => {
 
   const onClick= (event) => {
     event.preventDefault();
+    setLoaderClass('loader')
     searchParams.set('page', 1);
     let url = `https://pixabay.com/api/?${searchParams}`
     fetch(url)
@@ -44,11 +46,13 @@ export const App = () => {
       .then(data => {
           setDataResponse(data);
       });
+    setLoaderClass('visually-hidden')
     searchParams.set('page', page);
   }
 
   const onClickPag = (event) => {
     event.preventDefault();
+    setLoaderClass('loader')
     let url = `https://pixabay.com/api/?${searchParams}`
     fetch(url)
       .then(response => response.json())
@@ -58,6 +62,7 @@ export const App = () => {
             for (let i = 0; i < data.hits.length; i++) {
               newData.hits.push(data.hits[i])
             }
+            setLoaderClass('visually-hidden')
             return newData
           })
         }
@@ -114,10 +119,11 @@ useEffect(() => {
   return (
     <div className={css.mainDiv}>
       <Searchbar onChange={onChange} onClick={onClick} />
+      <Loader loaderClass={loaderClass} />
       <ImageGallery markup={markup} toggleModal={toggleModal}  />
       <PaginationButton onClickPag={onClickPag} />
       <Modal modalClass={modalClass} picture={picture} escModal={escModal}/>
-      <Loader />
+      
       {/*<ImageGalleryItem />
       */}
     </div>
